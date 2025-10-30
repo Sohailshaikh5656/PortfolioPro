@@ -21,116 +21,12 @@
     <BR>
     <BR>
 
-    <div id="main" style="margin:0px auto; text-align:center; position:sticky;">
-        <center>
-            <table border="0" cellpadding="10" cellspacing="10" width="70%" style="background-color: #2c7399;color: #fff;font-weight: bold;">
-                <tr>
-                    <td><b>Server URL :-</b></td>
-                    <td>
-                        <%= globals.app_url %>
-                    </td>
-                    <td>Header Parameters :</td>
-                    <td><b>api_key,<br>authorization,<br>accept_language (en,es,fr)</br>Content-Type</b><br><b>is_production (true /false) </b></td>
-                    <!-- <td><br>accept_language: en -> English<br></td> -->
-                </tr>
-                <tr>
-                    <!-- <td colspan="4" align="center"><b>If Device Token not get pass 0 only</b></td> -->
-                    <td colspan="4" align="center"><b>In authorization pass access_token</b></td>
-                </tr>
-            </table>
-        </center>
-
-        <br>
-        <br>
-    </div>
+   
     <div id="app">
         <v-app id="inspire">
 
             <v-layout justify column>
-                <v-flex style="margin:0px auto; padding:0px; text-align:center;" center right sm2 xs2 md2 lg2 xl2>
-                    <!-- <img src='<%= globals.base_url_without_api+ globals.logo %>' width="250px" height="250px" style="border:1px solid black"> -->
-                    <br>
-                    <strong style="font-size:24px;">
-						<%= globals.app_name %> API LIST</strong>
-                    <br>
-                    <br>
-                </v-flex>
-                <v-flex style="margin:0px auto; padding:0px;" center right sm2 xs2 md2 lg2 xl2>
-
-                    <div id="main" style="margin:0px auto; position:sticky;">
-                        <table border="0" cellpadding="10" cellspacing="10" width="140%" style="background-color: rgb(71, 131, 100);color: #fff;font-weight: bold;">
-                            <tr>
-                                <td><b>Server URL :</b></td>
-                                <td>
-                                    <%= globals.app_url %>v1/</td>
-                            </tr>
-                            <tr>
-                                <td><b>Header Parameters :</b></td>
-                                <td>api_key,authorization,accept_language</td>
-                            </tr>
-                            <tr>
-                                <td><b>api_key :</b></td>
-                                <td><b><%= globals.api_key %></b></td>
-                            </tr>
-                            <tr>
-                                <td><b>api_key(encrypted) :-</b></td>
-                                <td><b>3oG7UFh0dYwtiDGb/McDWA==</b></td>
-                            </tr>
-                            <tr>
-                                <td><b>KEY :</b></td>
-                                <td><b>xza548sa3vcr641b5ng5nhy9mlo64r6k</b></td>
-                            </tr>
-                            <tr>
-                                <td><b>IV :</b></td>
-                                <td><b><%= globals.encryptionIV %></b></td>
-                            </tr>
-                            <!-- <tr>
-                                <td colspan="2" align="center"><img src='<%= globals.base_url_without_api+ globals.arrow_image %>' width="40px"> &nbsp;&nbsp;
-                                    <b>If Device Token not get pass 0 only</b></td>
-                            </tr> -->
-                        </table>
-                        <br>
-                        <br>
-                    </div>
-                </v-flex>
-                <v-flex style="margin:0px auto;" center right sm2 xs2 md2 lg2 xl2>
-                    <!-- <a target="_blank" href='<%= globals.port_base_url %>/v1/api_document/user_list'>
-                        <v-btn color="blue-grey" class="white--text">
-                            User LIST
-                            <v-icon right dark>people</v-icon>
-                        </v-btn>
-                    </a> -->
-                    <!-- 	<a target="_blank" href='<%= globals.port_base_url %>v1/Api_document/tutor_list'>
-						<v-btn color="blue-grey" class="white--text">
-							Tutor LIST
-							<v-icon right dark>people</v-icon>
-						</v-btn>
-					</a> -->
-                    <a href='<%= globals.port_base_url %>v1/api_document/code'>
-                        <v-btn color="blue-grey" class="white--text">
-                            CODE REFERENCE
-                            <v-icon right dark>code</v-icon>
-                        </v-btn>
-                    </a>
-                    <a target="_blank" href='http://3.125.89.55/tostylmou/enc_dec.php'>
-                        <v-btn color="blue-grey" class="white--text">
-                            ENCRYPTION URL
-                            <v-icon right dark>lock</v-icon>
-                        </v-btn>
-                    </a>
-                    <!-- <a target="_blank" href='https://vuetifyjs.com/en/style/colors'>
-						<v-btn color="blue-grey" class="white--text">
-							COLOR INFO
-							<v-icon right dark>color_lens</v-icon>
-						</v-btn>
-					</a>
-					<a target="_blank" href='https://material.io/tools/icons/?style=baseline'>
-						<v-btn color="blue-grey" class="white--text">
-							ICON INFO
-							<v-icon right dark>bubble_chart</v-icon>
-						</v-btn>
-					</a> -->
-                </v-flex>
+                
                 <v-expansion-panel popout>
                     <v-expansion-panel-content v-for="(message, i) in messages" :key="i" hide-actions>
                         <v-layout slot="header" align-center row spacer>
@@ -256,15 +152,15 @@
                     color: 'teal',
                     icon: 'person',
                     title: '1 : USER',
-                    name: 'Signup',
+                    name: 'User Basic',
                     meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/signup",
-                    mandatory: "name,phone,email,password,device_type('I','A'),country_code,os_version,device_version",
+                    link: "<%= globals.port_base_url %>api/basic",
+                    mandatory: "name, company_name, email, profession, age, state, city, image, template_id, steps",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key",
-                    notes: "This api used to user signup",
+                    notes: "This api used to store user Info",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result",
 
@@ -272,15 +168,15 @@
                     color: 'teal',
                     icon: 'person',
                     title: '2 : USER',
-                    name: 'Login',
+                    name: 'Header',
                     meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/login",
-                    mandatory: "email_phone,password,device_type('I','A'),os_version,app_version",
+                    link: "<%= globals.port_base_url %>api/header",
+                    mandatory: "hero_title,hero_subtitle,hero_cta,image,user_id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key",
-                    notes: "This api used to user login",
+                    notes: "This api used to user Hero Info",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result",
 
@@ -288,120 +184,120 @@
                     color: 'teal',
                     icon: 'person',
                     title: '3 : USER',
-                    name: 'Verify OTP',
+                    name: 'About',
                     meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/verifyOTP",
-                    mandatory: "user_id,otp",
+                    link: "<%= globals.port_base_url %>api/about",
+                    mandatory: "bio, experiance, project_count, skills, user_id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key",
-                    notes: "This api used to verify OTP",
+                    notes: "This api used to Store About Info",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '4 : USER',
-                    name: 'Resend OTP',
+                    name: 'services',
                     meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/resendOTP",
-                    mandatory: "user_id",
+                    link: "<%= globals.port_base_url %>api/services",
+                    mandatory: "title,description,user_id",
                     optional: "",
                     is_header: "YES",
                     is_push: "YES",
                     header: "api_key",
-                    notes: "This api used to resend OTP to user",
+                    notes: "This api used to Store User Services Info",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '5 : USER',
-                    name: 'Change Password',
+                    name: 'portfolio',
                     meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/changePassword",
-                    mandatory: "oldPassword,newPassword",
+                    link: "<%= globals.port_base_url %>api/portfolio",
+                    mandatory: "title, description, link, image, project_order, user_id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key, authorization",
-                    notes: "This api used to user change password",
+                    notes: "This api used to Store Portfolio or Project Info",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '6 : USER',
-                    name: 'Forgot Password',
+                    name: 'testimonials',
                     meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/forgotPassword",
-                    mandatory: "email",
+                    link: "<%= globals.port_base_url %>api/testimonials",
+                    mandatory: "cient_name, testimonial, logo, testimonial_order, user_id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key",
-                    notes: "This api used to user forgot password",
+                    notes: "This api used to Store Testimonial of User",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '7 : USER',
-                    name: 'Set Password',
+                    name: 'contact',
                     meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/setPassword",
-                    mandatory: "user_id,password",
+                    link: "<%= globals.port_base_url %>api/contact",
+                    mandatory: "email, phone, address, social_links,user_id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key, authorization",
-                    notes: "This api used to user setPassword",
+                    notes: "This api used to Store Contact Info of Users",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '8 : USER',
-                    name: 'Logout',
+                    name: 'Footer',
                     meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/logout",
+                    link: "<%= globals.port_base_url %>api/footer",
                     mandatory: "",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key",
-                    notes: "This api used to logout",
+                    notes: "This api used to Store Footer of User",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '9 : USER',
-                    name: 'Category List',
+                    name: 'Get User',
                     meth: 'GET',
-                    link: "<%= globals.port_base_url %>v1/user/categoryList",
-                    mandatory: "",
+                    link: "<%= globals.port_base_url %>api/user",
+                    mandatory: "id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key",
-                    notes: "This api used for category list",
+                    notes: "This api used for get User",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '10 : USER',
-                    name: 'Profile',
-                    meth: 'GET',
-                    link: "<%= globals.port_base_url %>v1/user/getUserProfile",
+                    name: 'Get All User',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>api/user",
                     mandatory: "",
-                    optional: "",
+                    optional: "location, profession, sort(a-z,z-a,experiance, rating)",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used to view profile",
+                    notes: "This api used Get All Users",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 },
@@ -409,15 +305,15 @@
                     color: 'teal',
                     icon: 'person',
                     title: '11 : USER',
-                    name: 'Add Goal / Personal Info',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/completeProfile",
-                    mandatory: "user_id,goal_id,step",
-                    optional: ",",
+                    name: 'Get All Profession',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>api/profession",
+                    mandatory: "",
+                    optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used to Add Goal, Step = 3",
+                    notes: "This api used to Get all Professions",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 },
@@ -425,15 +321,15 @@
                     color: 'teal',
                     icon: 'person',
                     title: '12 : USER',
-                    name: 'Add LOCATION / Personal Info',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/completeProfile",
-                    mandatory: "step=4,area,flat_no,block,road,delivery_info,type,latitude,longitude,user_id",
+                    name: 'Get All LOCATION',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>api/location",
+                    mandatory: "",
                     optional: ",",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used to Add User Location, Step = 4",
+                    notes: "This api used to Get All Locations",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }
@@ -442,349 +338,168 @@
                     color: 'teal',
                     icon: 'person',
                     title: '13 : USER',
-                    name: 'Edit Profile / Personal Info',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/completeProfile",
-                    mandatory: "step,gender,dob,weight,target_weight,height,activity_level,user_id",
+                    name: 'Check UserStep',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>api/userStep",
+                    mandatory: "id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used to edit profile | step=5",
+                    notes: "This api used to check User Completed Steps",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '14 : USER',
-                    name: 'Delete Account',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/userDeleteAccount",
-                    mandatory: "user_id",
-                    optional: "",
+                    name: 'Update User Basic',
+                    meth: 'PUT',
+                    link: "<%= globals.port_base_url %>api/user",
+                    mandatory: "id",
+                    optional: "name, company_name, email, profession, age, state, city, image, template_id, steps",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used to Delete Account",
+                    notes: "This api used to Upadate User Basics",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '15 : USER',
-                    name: 'Home Screen',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/homeScreen",
-                    mandatory: "",
-                    optional: "categoryId,date",
+                    name: 'Update About',
+                    meth: 'PUT',
+                    link: "<%= globals.port_base_url %>api/about",
+                    mandatory: "id",
+                    optional: "bio, experiance, project_count, skills",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used to Render Home Screen",
+                    notes: "This api used to Update User About",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
+                },{
                     color: 'teal',
                     icon: 'person',
                     title: '16 : USER',
-                    name: 'Add To Cart',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/addToCart",
-                    mandatory: "meal_provider_id,user_id,qty",
-                    optional: "",
+                    name: 'Update Hero',
+                    meth: 'PUT',
+                    link: "<%= globals.port_base_url %>api/hero",
+                    mandatory: "id",
+                    optional: "hero_title, hero_subtitle, hero_cta, image",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used for Att to Cart",
+                    notes: "This api used to Update User Hero Section",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
                 }, {
                     color: 'teal',
                     icon: 'person',
                     title: '17 : USER',
-                    name: 'Order Place',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/orderPlace",
-                    mandatory: "delivery_id,delivery_time,user_id",
-                    optional: "",
+                    name: 'Update Portfolio',
+                    meth: 'PUT',
+                    link: "<%= globals.port_base_url %>api/portfolio",
+                    mandatory: "id",
+                    optional: "title, description, link, image, project_count",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used for Placing An Order",
+                    notes: "This api used to Update Portfolio/Projects",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
+                },{
                     color: 'teal',
                     icon: 'person',
                     title: '18 : USER',
-                    name: 'Meals details',
-                    meth: 'GET',
-                    link: "<%= globals.port_base_url %>v1/user/orderDetails",
-                    mandatory: "meal_id",
-                    optional: "",
+                    name: 'Update Services',
+                    meth: 'PUT',
+                    link: "<%= globals.port_base_url %>api/services",
+                    mandatory: "id",
+                    optional: "title, description",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used for to view Single Meal Details",
+                    notes: "This api used to Update User Services Sections",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
+                },{
                     color: 'teal',
                     icon: 'person',
                     title: '19 : USER',
-                    name: 'Add Address',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/addAddress",
-                    mandatory: "area,flat_on,block,road,delivery_info,type,latitude,longitude",
-                    optional: "",
+                    name: 'Update Testimonials',
+                    meth: 'PUT',
+                    link: "<%= globals.port_base_url %>api/testimonials",
+                    mandatory: "id",
+                    optional: "client_name, testimonial, logo, testimonial_order",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used for Add Address",
+                    notes: "This api used to Update User Testimonial Section",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
+                },{
                     color: 'teal',
                     icon: 'person',
                     title: '20 : USER',
-                    name: 'Order Details',
-                    meth: 'GET',
-                    link: "<%= globals.port_base_url %>v1/user/orderDetails",
-                    mandatory: "order_id",
-                    optional: "",
+                    name: 'Update Footer',
+                    meth: 'PUT',
+                    link: "<%= globals.port_base_url %>api/footer",
+                    mandatory: "id",
+                    optional: "company, year, additional_links, copyright_text",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used for to Show Order Details",
+                    notes: "This api used to Update User Footer Section",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
+                },{
                     color: 'teal',
                     icon: 'person',
                     title: '21 : USER',
-                    name: 'Help and Support',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/helpSupport",
-                    mandatory: "fullname,phone,email,description",
+                    name: 'Delete Services',
+                    meth: 'DELETE',
+                    link: "<%= globals.port_base_url %>api/services",
+                    mandatory: "id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used for Help and Support",
+                    notes: "This api used to Delete User Services",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
+                },{
                     color: 'teal',
                     icon: 'person',
                     title: '22 : USER',
-                    name: 'Update Order Status',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/updateOrderStatus",
-                    mandatory: "status(confirmed,preparation,out of delivery,completed),order_id",
+                    name: 'Delete Testimonal',
+                    meth: 'DELETE',
+                    link: "<%= globals.port_base_url %>api/testimonials",
+                    mandatory: "id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used for Update Order Status",
+                    notes: "This api used to Delete User Testimonials",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
+                },{
                     color: 'teal',
                     icon: 'person',
                     title: '23 : USER',
-                    name: 'Contact | Inquiry',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/contact",
-                    mandatory: "first_name,last_lname,email,subject,description",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key",
-                    notes: "This api used for Contact Form",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '24 : USER',
-                    name: 'Comment Listing',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/commentListing",
-                    mandatory: "post_id",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key",
-                    notes: "This api used for commentlisting",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '25 : USER',
-                    name: 'Purchase Plan',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/user/purchasePlan",
-                    mandatory: "plan_id,user_id",
+                    name: 'Delete Portfolio/Project',
+                    meth: 'DELETE',
+                    link: "<%= globals.port_base_url %>api/portfolio",
+                    mandatory: "id",
                     optional: "",
                     is_header: "YES",
                     is_push: "NO",
                     header: "api_key,authorization",
-                    notes: "This api used for Purchase Plan",
+                    notes: "This api used to Delete User Portfolio/Project",
                     status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
                     imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '26 : USER',
-                    name: 'Notifiction Listing',
-                    meth: 'GET',
-                    link: "<%= globals.port_base_url %>v1/user/notificationListing",
-                    mandatory: "user_id",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key,authorization",
-                    notes: "This api used for Notification Listing",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                },
-                {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '27 : USER',
-                    name: 'Context Page',
-                    meth: 'GET',
-                    link: "<%= globals.port_base_url %>v1/user/getContextPage",
-                    mandatory: "tag(1,2,3)",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key,authorization",
-                    notes: "This api used for Notification Listing || tag(1='about',2='Term and Condition', 3='Policy')",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '28 : ADMIN',
-                    name: 'Add New Admin',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/admin/addAdmin",
-                    mandatory: "email,password",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key",
-                    notes: "This api used for Add New Admin",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '29 : ADMIN',
-                    name: 'Admin Login',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/admin/login",
-                    mandatory: 'email,password,device_type',
-                    optional: "os_version,app_version",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key",
-                    notes: "This api used for Admin Login",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '30 : ADMIN',
-                    name: 'Add Category',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/admin/addCategory",
-                    mandatory: "name,admin_id",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key,authorization",
-                    notes: "This api used for Add New Category  ",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '31 : ADMIN',
-                    name: 'Add Meal',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/admin/addMeal",
-                    mandatory: "name,kcal,carbs,protein,category_id,ingredients,price,admin_price",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key,authorization",
-                    notes: "This api used for Add New Meal",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '32 : ADMIN',
-                    name: 'Meal Provider Date Wise',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/admin/mealProvider",
-                    mandatory: "flag_id='Date|date',startingDate,endingDate,meal_id,admin_id",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key,authorization",
-                    notes: "This api used for Provide Avaiblity Meal According to Date Wise",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '33 : ADMIN',
-                    name: 'Meal Provider Day Wise',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/admin/mealProvider",
-                    mandatory: "flag=Day|day, day=(Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday),repeat,meal_is,admin_id",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key,authorization",
-                    notes: "This api used for Provide Avaiblity Meal According to Day Wise",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '34 : ADMIN',
-                    name: 'Dashboard',
-                    meth: 'GET',
-                    link: "<%= globals.port_base_url %>v1/admin/dashboard",
-                    mandatory: "admin_id",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key,authorization",
-                    notes: "This api used for add group",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "members => user id array ex. [20,21,22]",
-                }, {
-                    color: 'teal',
-                    icon: 'person',
-                    title: '35 : ADMIN',
-                    name: 'Add New Plan',
-                    meth: 'POST',
-                    link: "<%= globals.port_base_url %>v1/admin/addPlan",
-                    mandatory: "name,description,price,duration,features,admin_id",
-                    optional: "",
-                    is_header: "YES",
-                    is_push: "NO",
-                    header: "api_key,authorization",
-                    notes: "This api used for adding a new plan for subscription",
-                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
-                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
-                },]
+                }]
             })
         });
     </script>
