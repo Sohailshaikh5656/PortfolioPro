@@ -30,37 +30,43 @@ Follow these steps to set up the project locally:
    # Download and install from https://nodejs.org/
    node --version
    npm --version
-Clone the Project
+   ```
 
-bash
-git clone https://github.com/Sohailshaikh5656/PortfolioPro.git
-cd portfolio-app
-Database Setup
-Setup Database the SQL is in Backend folder Check All Credentials should be correct ! Database Name, UserName, Password, Port
+2. **Clone the Project**
+   ```bash
+     git clone https://github.com/Sohailshaikh5656/PortfolioPro.git
+    cd portfolio-app
+   ```
 
-Configure Database Credentials
+3. **Database Setup**
+    Setup Database the SQL is in Backend folder Check All Credentials should be correct ! Database Name, UserName, Password, Port
 
-bash
-# Edit backend/config/database.js
-# Update with your MySQL credentials:
-# host, user, password, database name
-Backend Setup
+4.**Configure Database Credentials**
+```bash
+    # Edit backend/config/database.js
+    # Update with your MySQL credentials:
+    # host, user, password, database name
+```
+5.**Backend Setup**
+```bash
+   # In backend directory
+    npm install
+    nodemon start
+    # Server will run on http://localhost:3300
+```
 
-bash
-# In backend directory
-npm install
-nodemon start
-# Server will run on http://localhost:3300
-Frontend Setup
+6.**Frontend Setup**
+```bash
+    # Open new terminal, navigate to frontend
+    cd ../frontend
+    npm install
+    npm start
+    # App will run on http://localhost:3000
+```
 
-bash
-# Open new terminal, navigate to frontend
-cd ../frontend
-npm install
-npm start
-# App will run on http://localhost:3000
-📁 Project Structure
-bash
+
+📁 **Project Structure**
+```bash
 portfolio-app/
 ├── backend/
 │   ├── config/
@@ -82,126 +88,61 @@ portfolio-app/
 │   ├── package.json
 │   └── README.md
 └── README.md
-✨ Features
-🚀 Fast API Calling
+```
 
-Optimized RESTful APIs with Express.js
+<ul> <li><strong>🚀 Fast API Calling</strong> <ul> <li>Optimized RESTful APIs with Express.js</li> <li>Efficient database queries for quick response times</li> <li>Asynchronous operations for better performance</li> </ul> </li> <li><strong>👤 User Profile Creation</strong> <ul> <li>Create comprehensive professional portfolios</li> <li>Upload profile pictures and cover images</li> <li>Add background and work experience</li> <li>Include skills, projects, and contact information</li> </ul> </li> <li><strong>🎨 Multiple Templates</strong> <ul> <li>Various pre-designed portfolio templates</li> <li>Customizable layout options</li> <li>Responsive design for all devices</li> </ul> </li> <li><strong>✏️ Edit Profile</strong> <ul> <li>Real-time profile editing capabilities</li> <li>Drag-and-drop interface for easy customization</li> <li>Preview changes before saving</li> <li>Auto-save functionality</li> </ul> </li> <li><strong>🔍 Profile Discovery</strong> <ul> <li>Browse all user profiles</li> <li>Advanced search and filtering options</li> <li>Category-based profile exploration</li> <li>Recommendation system</li> </ul> </li> <li><strong>🔎 Enhanced Search</strong> <ul> <li>Smart search with auto-suggestions</li> <li>Filter by skills, location, experience</li> <li>Keyword-based profile matching</li> <li>Fast and accurate results</li> </ul> </li> </ul>
 
-Efficient database queries for quick response times
+📸 **Project Demo**
 
-Asynchronous operations for better performance
-
-👤 User Profile Creation
-
-Create comprehensive professional portfolios
-
-Upload profile pictures and cover images
-
-Add educational background and work experience
-
-Include skills, projects, and contact information
-
-🎨 Multiple Templates
-
-Various pre-designed portfolio templates
-
-Customizable layout options
-
-Responsive design for all devices
-
-✏️ Edit Profile
-
-Real-time profile editing capabilities
-
-Drag-and-drop interface for easy customization
-
-Preview changes before saving
-
-Auto-save functionality
-
-🔍 Profile Discovery
-
-Browse all user profiles
-
-Advanced search and filtering options
-
-Category-based profile exploration
-
-Recommendation system
-
-🔎 Enhanced Search
-
-Smart search with auto-suggestions
-
-Filter by skills, location, experience
-
-Keyword-based profile matching
-
-Fast and accurate results
-
-📸 Project Demo
 <div align="center">
-https://./screenshot/s1.png
-
-
 <hr />
-https://./screenshot/s2.png
-
-
+<img src='./screenshot/s1.png' height=400>
+<br />
 <hr />
-https://./screenshot/s3.png
-
-
+<img src='./screenshot/s2.png' height=400>
+<br />
 <hr />
-https://./screenshot/s4.png
-
-
+<img src='./screenshot/s3.png' height=400>
+<br />
 <hr />
-https://./screenshot/s5.png
-
-
+<img src='./screenshot/s4.png' height=400>
+<br />
 <hr />
-https://./screenshot/s6.png
-
-
+<img src='./screenshot/s5.png' height=400>
+<br />
 <hr />
-https://./screenshot/s7.png
-
-
+<img src='./screenshot/s6.png' height=400>
+<br />
 <hr />
-https://./screenshot/s8.png
-
-
+<img src='./screenshot/s7.png' height=400>
+<br />
 <hr />
-https://./screenshot/s9.png
-
-
+<img src='./screenshot/s8.png' height=400>
+<br />
 <hr />
-https://./screenshot/s10.png
-
-
+<img src='./screenshot/s9.png' height=400>
+<br />
 <hr />
-https://./screenshot/s11.png
-
-
+<img src='./screenshot/s10.png' height=400>
+<br />
 <hr />
-https://./screenshot/s12.png
-
-
+<img src='./screenshot/s11.png' height=400>
+<br />
 <hr />
-https://./screenshot/s13.png
-
-
+<img src='./screenshot/s12.png' height=400>
+<br />
 <hr />
-https://./screenshot/s14.png
-
-
+<img src='./screenshot/s13.png' height=400>
+<br />
 <hr />
-https://./screenshot/s15.png
+<img src='./screenshot/s14.png' height=400>
+<br />
+<hr />
+<img src='./screenshot/s15.png' height=400>
+<br />
 
-
-</div>
-👨‍💻 Author
+  
+👨‍💻 **Author**
 Shaikh Sohel
 
 🎓 MCA @ LJ Campus
@@ -210,13 +151,11 @@ Shaikh Sohel
 💼 Technical Training in:
 
 React.js
-
 Node.js
-
 Next.js
-
 MySQL
 
 <div align="center">
 ⭐ Star this repository if you find it helpful!
 </div> ```
+</div>
