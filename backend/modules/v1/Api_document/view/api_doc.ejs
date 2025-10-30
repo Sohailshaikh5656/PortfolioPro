@@ -1,0 +1,793 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <link href="https://unpkg.com/vuetify@1.0.17/dist/vuetify.min.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="<%= globals.LOGO %>">
+
+    <title>
+        <%= globals.app_name %> API</title>
+    <style type="text/css">
+        .medium-text {
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <BR>
+    <BR>
+
+    <div id="main" style="margin:0px auto; text-align:center; position:sticky;">
+        <center>
+            <table border="0" cellpadding="10" cellspacing="10" width="70%" style="background-color: #2c7399;color: #fff;font-weight: bold;">
+                <tr>
+                    <td><b>Server URL :-</b></td>
+                    <td>
+                        <%= globals.app_url %>
+                    </td>
+                    <td>Header Parameters :</td>
+                    <td><b>api_key,<br>authorization,<br>accept_language (en,es,fr)</br>Content-Type</b><br><b>is_production (true /false) </b></td>
+                    <!-- <td><br>accept_language: en -> English<br></td> -->
+                </tr>
+                <tr>
+                    <!-- <td colspan="4" align="center"><b>If Device Token not get pass 0 only</b></td> -->
+                    <td colspan="4" align="center"><b>In authorization pass access_token</b></td>
+                </tr>
+            </table>
+        </center>
+
+        <br>
+        <br>
+    </div>
+    <div id="app">
+        <v-app id="inspire">
+
+            <v-layout justify column>
+                <v-flex style="margin:0px auto; padding:0px; text-align:center;" center right sm2 xs2 md2 lg2 xl2>
+                    <!-- <img src='<%= globals.base_url_without_api+ globals.logo %>' width="250px" height="250px" style="border:1px solid black"> -->
+                    <br>
+                    <strong style="font-size:24px;">
+						<%= globals.app_name %> API LIST</strong>
+                    <br>
+                    <br>
+                </v-flex>
+                <v-flex style="margin:0px auto; padding:0px;" center right sm2 xs2 md2 lg2 xl2>
+
+                    <div id="main" style="margin:0px auto; position:sticky;">
+                        <table border="0" cellpadding="10" cellspacing="10" width="140%" style="background-color: rgb(71, 131, 100);color: #fff;font-weight: bold;">
+                            <tr>
+                                <td><b>Server URL :</b></td>
+                                <td>
+                                    <%= globals.app_url %>v1/</td>
+                            </tr>
+                            <tr>
+                                <td><b>Header Parameters :</b></td>
+                                <td>api_key,authorization,accept_language</td>
+                            </tr>
+                            <tr>
+                                <td><b>api_key :</b></td>
+                                <td><b><%= globals.api_key %></b></td>
+                            </tr>
+                            <tr>
+                                <td><b>api_key(encrypted) :-</b></td>
+                                <td><b>3oG7UFh0dYwtiDGb/McDWA==</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>KEY :</b></td>
+                                <td><b>xza548sa3vcr641b5ng5nhy9mlo64r6k</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>IV :</b></td>
+                                <td><b><%= globals.encryptionIV %></b></td>
+                            </tr>
+                            <!-- <tr>
+                                <td colspan="2" align="center"><img src='<%= globals.base_url_without_api+ globals.arrow_image %>' width="40px"> &nbsp;&nbsp;
+                                    <b>If Device Token not get pass 0 only</b></td>
+                            </tr> -->
+                        </table>
+                        <br>
+                        <br>
+                    </div>
+                </v-flex>
+                <v-flex style="margin:0px auto;" center right sm2 xs2 md2 lg2 xl2>
+                    <!-- <a target="_blank" href='<%= globals.port_base_url %>/v1/api_document/user_list'>
+                        <v-btn color="blue-grey" class="white--text">
+                            User LIST
+                            <v-icon right dark>people</v-icon>
+                        </v-btn>
+                    </a> -->
+                    <!-- 	<a target="_blank" href='<%= globals.port_base_url %>v1/Api_document/tutor_list'>
+						<v-btn color="blue-grey" class="white--text">
+							Tutor LIST
+							<v-icon right dark>people</v-icon>
+						</v-btn>
+					</a> -->
+                    <a href='<%= globals.port_base_url %>v1/api_document/code'>
+                        <v-btn color="blue-grey" class="white--text">
+                            CODE REFERENCE
+                            <v-icon right dark>code</v-icon>
+                        </v-btn>
+                    </a>
+                    <a target="_blank" href='http://3.125.89.55/tostylmou/enc_dec.php'>
+                        <v-btn color="blue-grey" class="white--text">
+                            ENCRYPTION URL
+                            <v-icon right dark>lock</v-icon>
+                        </v-btn>
+                    </a>
+                    <!-- <a target="_blank" href='https://vuetifyjs.com/en/style/colors'>
+						<v-btn color="blue-grey" class="white--text">
+							COLOR INFO
+							<v-icon right dark>color_lens</v-icon>
+						</v-btn>
+					</a>
+					<a target="_blank" href='https://material.io/tools/icons/?style=baseline'>
+						<v-btn color="blue-grey" class="white--text">
+							ICON INFO
+							<v-icon right dark>bubble_chart</v-icon>
+						</v-btn>
+					</a> -->
+                </v-flex>
+                <v-expansion-panel popout>
+                    <v-expansion-panel-content v-for="(message, i) in messages" :key="i" hide-actions>
+                        <v-layout slot="header" align-center row spacer>
+                            <v-flex sm1 xs1 md1 lg1 xl1>
+                                <v-avatar slot="activator" size="36px">
+                                    <v-icon :color="message.color">{{ message.icon }}</v-icon>
+                                </v-avatar>
+                            </v-flex>
+                            <v-flex sm3 xs3 md3 lg3 xl3>
+                                <strong v-html="message.title"></strong>
+                                <v-chip v-if="message.meth" :color="`${message.color} lighten-4`" label small class="ml-0">
+                                    {{ message.meth }}
+                                </v-chip>
+                            </v-flex>
+                            <v-flex sm3 xs3 md3 lg3 xl3>
+                                <strong v-html="message.name"></strong>
+                            </v-flex>
+                            <v-flex sm4 xs4 md4 lg4 xl4>
+                                <v-flex v-if="message.link" class="grey--text" ellipsis hidden-sm-and-down>
+                                    {{ message.link }}
+                                </v-flex>
+                                <v-flex v-if="message.imp" class="grey--text" ellipsis hidden-sm-and-down>
+                                    <p style="color:darkred">SHOW IMPORTANT NOTE INSIDE</p>
+                                </v-flex>
+                            </v-flex>
+                        </v-layout>
+                        <v-card dark>
+                            <v-container>
+                                <v-layout>
+                                    <v-flex xs12 align-end flexbox>
+                                        <v-alert :value="true" outline color="white" style="padding:5px;">
+                                            <v-chip color="teal" text-color="white">
+                                                <v-avatar>
+                                                    <v-icon>check_circle</v-icon>
+                                                </v-avatar> MANDATORY
+                                            </v-chip>
+                                            {{message.mandatory}}
+                                        </v-alert>
+                                        <v-alert :value="true" outline color="white" style="padding:5px;">
+                                            <v-chip outline color="#F0F4C3">
+                                                <v-avatar>
+                                                    <v-icon>check_circle</v-icon>
+                                                </v-avatar>OPTIONAL
+                                            </v-chip>
+                                            <span>{{ message.optional }}
+										</v-alert>
+										<v-alert v-if="message.link" :value="true" outline color="white"
+											style="padding:5px;">
+											<v-chip color="light-green darken-2" text-color="white">
+												<v-avatar>
+													<v-icon>explore</v-icon>
+												</v-avatar> LINK
+											</v-chip>
+											<span>{{ message.link }}
+										</v-alert>
+										<v-alert v-if="message.imp" :value="true" outline color="white"
+											style="padding:5px;">
+											<v-chip color="red darken-2" text-color="white">
+												<v-avatar>
+													<v-icon>flight_land</v-icon>
+												</v-avatar> IMPORTANT
+											</v-chip>
+											<p v-html="message.imp"></p>
+										</v-alert>
+										<v-alert v-if="message.exp" :value="true" outline color="white"
+											style="padding:5px;">
+											<v-chip color="blue darken-2" text-color="white">
+												<v-avatar>
+													<v-icon></v-icon>
+												</v-avatar> EXAMPLE
+											</v-chip>
+											<p v-html="message.exp"></p>
+										</v-alert>
+										<v-alert v-if="message.notes" :value="true" outline color="white"
+											style="padding:5px;">
+											<v-chip color="blue lighten-1" text-color="white">
+												<v-avatar>
+													<v-icon>bookmark</v-icon>
+												</v-avatar> NOTES
+											</v-chip>
+											<span>{{ message.notes }}
+										</v-alert>
+										<v-layout style="margin-top:-4px">
+											<v-flex xs6 align-end flexbox>
+												<v-alert :value="true" outline color="yellow" icon="priority_high"
+													style="padding:5px;">
+													<span class="grey--text">HEADER : {{ message.is_header }}, PUSH :
+														{{ message.is_push }}</span>
+                                            <br>
+                                            <span>HEADER : {{ message.header }}</span>
+                                        </v-alert>
+                                    </v-flex>
+                                    <v-flex xs6 align-end flexbox>
+                                        <v-alert style="margin-left:4px; padding:5px;" :value="true" outline color="yellow" icon="priority_high">
+                                            STATUS :
+                                            <span v-html="message.status"></span>
+                                        </v-alert>
+                                    </v-flex>
+                                </v-layout>
+                                </v-flex>
+            </v-layout>
+            </v-container>
+            <v-card-actions>
+            </v-card-actions>
+            </v-card>
+            </v-expansion-panel-content>
+            </v-expansion-panel>
+            </v-layout>
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuetify@1.0.17/dist/vuetify.min.js"></script>
+    <script src="https://unpkg.com/babel-polyfill/dist/polyfill.min.js"></script>
+
+    <script>
+        //console.log('<%= globals.base_url %>enc_dec.php');
+
+        new Vue({
+            el: '#app',
+            data: () => ({
+                messages: [{
+                    color: 'teal',
+                    icon: 'person',
+                    title: '1 : USER',
+                    name: 'Signup',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/signup",
+                    mandatory: "name,phone,email,password,device_type('I','A'),country_code,os_version,device_version",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used to user signup",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result",
+
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '2 : USER',
+                    name: 'Login',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/login",
+                    mandatory: "email_phone,password,device_type('I','A'),os_version,app_version",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used to user login",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result",
+
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '3 : USER',
+                    name: 'Verify OTP',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/verifyOTP",
+                    mandatory: "user_id,otp",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used to verify OTP",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '4 : USER',
+                    name: 'Resend OTP',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/resendOTP",
+                    mandatory: "user_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "YES",
+                    header: "api_key",
+                    notes: "This api used to resend OTP to user",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '5 : USER',
+                    name: 'Change Password',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/changePassword",
+                    mandatory: "oldPassword,newPassword",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key, authorization",
+                    notes: "This api used to user change password",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '6 : USER',
+                    name: 'Forgot Password',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/forgotPassword",
+                    mandatory: "email",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used to user forgot password",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '7 : USER',
+                    name: 'Set Password',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/setPassword",
+                    mandatory: "user_id,password",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key, authorization",
+                    notes: "This api used to user setPassword",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '8 : USER',
+                    name: 'Logout',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/logout",
+                    mandatory: "",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used to logout",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '9 : USER',
+                    name: 'Category List',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>v1/user/categoryList",
+                    mandatory: "",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used for category list",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '10 : USER',
+                    name: 'Profile',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>v1/user/getUserProfile",
+                    mandatory: "",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used to view profile",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                },
+                {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '11 : USER',
+                    name: 'Add Goal / Personal Info',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/completeProfile",
+                    mandatory: "user_id,goal_id,step",
+                    optional: ",",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used to Add Goal, Step = 3",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                },
+                {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '12 : USER',
+                    name: 'Add LOCATION / Personal Info',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/completeProfile",
+                    mandatory: "step=4,area,flat_no,block,road,delivery_info,type,latitude,longitude,user_id",
+                    optional: ",",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used to Add User Location, Step = 4",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }
+                ,
+                {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '13 : USER',
+                    name: 'Edit Profile / Personal Info',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/completeProfile",
+                    mandatory: "step,gender,dob,weight,target_weight,height,activity_level,user_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used to edit profile | step=5",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '14 : USER',
+                    name: 'Delete Account',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/userDeleteAccount",
+                    mandatory: "user_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used to Delete Account",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '15 : USER',
+                    name: 'Home Screen',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/homeScreen",
+                    mandatory: "",
+                    optional: "categoryId,date",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used to Render Home Screen",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '16 : USER',
+                    name: 'Add To Cart',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/addToCart",
+                    mandatory: "meal_provider_id,user_id,qty",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Att to Cart",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '17 : USER',
+                    name: 'Order Place',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/orderPlace",
+                    mandatory: "delivery_id,delivery_time,user_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Placing An Order",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '18 : USER',
+                    name: 'Meals details',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>v1/user/orderDetails",
+                    mandatory: "meal_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for to view Single Meal Details",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '19 : USER',
+                    name: 'Add Address',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/addAddress",
+                    mandatory: "area,flat_on,block,road,delivery_info,type,latitude,longitude",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Add Address",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '20 : USER',
+                    name: 'Order Details',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>v1/user/orderDetails",
+                    mandatory: "order_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for to Show Order Details",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '21 : USER',
+                    name: 'Help and Support',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/helpSupport",
+                    mandatory: "fullname,phone,email,description",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Help and Support",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '22 : USER',
+                    name: 'Update Order Status',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/updateOrderStatus",
+                    mandatory: "status(confirmed,preparation,out of delivery,completed),order_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Update Order Status",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '23 : USER',
+                    name: 'Contact | Inquiry',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/contact",
+                    mandatory: "first_name,last_lname,email,subject,description",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used for Contact Form",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '24 : USER',
+                    name: 'Comment Listing',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/commentListing",
+                    mandatory: "post_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used for commentlisting",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '25 : USER',
+                    name: 'Purchase Plan',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/user/purchasePlan",
+                    mandatory: "plan_id,user_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Purchase Plan",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '26 : USER',
+                    name: 'Notifiction Listing',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>v1/user/notificationListing",
+                    mandatory: "user_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Notification Listing",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                },
+                {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '27 : USER',
+                    name: 'Context Page',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>v1/user/getContextPage",
+                    mandatory: "tag(1,2,3)",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Notification Listing || tag(1='about',2='Term and Condition', 3='Policy')",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '28 : ADMIN',
+                    name: 'Add New Admin',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/admin/addAdmin",
+                    mandatory: "email,password",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used for Add New Admin",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '29 : ADMIN',
+                    name: 'Admin Login',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/admin/login",
+                    mandatory: 'email,password,device_type',
+                    optional: "os_version,app_version",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key",
+                    notes: "This api used for Admin Login",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '30 : ADMIN',
+                    name: 'Add Category',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/admin/addCategory",
+                    mandatory: "name,admin_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Add New Category  ",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '31 : ADMIN',
+                    name: 'Add Meal',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/admin/addMeal",
+                    mandatory: "name,kcal,carbs,protein,category_id,ingredients,price,admin_price",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Add New Meal",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '32 : ADMIN',
+                    name: 'Meal Provider Date Wise',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/admin/mealProvider",
+                    mandatory: "flag_id='Date|date',startingDate,endingDate,meal_id,admin_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Provide Avaiblity Meal According to Date Wise",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '33 : ADMIN',
+                    name: 'Meal Provider Day Wise',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/admin/mealProvider",
+                    mandatory: "flag=Day|day, day=(Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday),repeat,meal_is,admin_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for Provide Avaiblity Meal According to Day Wise",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '34 : ADMIN',
+                    name: 'Dashboard',
+                    meth: 'GET',
+                    link: "<%= globals.port_base_url %>v1/admin/dashboard",
+                    mandatory: "admin_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for add group",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "members => user id array ex. [20,21,22]",
+                }, {
+                    color: 'teal',
+                    icon: 'person',
+                    title: '35 : ADMIN',
+                    name: 'Add New Plan',
+                    meth: 'POST',
+                    link: "<%= globals.port_base_url %>v1/admin/addPlan",
+                    mandatory: "name,description,price,duration,features,admin_id",
+                    optional: "",
+                    is_header: "YES",
+                    is_push: "NO",
+                    header: "api_key,authorization",
+                    notes: "This api used for adding a new plan for subscription",
+                    status: "<br>1. HTTP_OK[200] - code : 0 <br>2. HTTP_OK[200] - code : 1 ",
+                    imp: "Code 0 =>Failure, Code 1 => succesfully result,",
+                },]
+            })
+        });
+    </script>
+</body>
+
+</html>
