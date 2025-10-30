@@ -89,7 +89,9 @@ portfolio-app/
 │   └── README.md
 └── README.md
 ```
-
+<br />
+✨ **Features**
+<br />
 <ul> <li><strong>🚀 Fast API Calling</strong> <ul> <li>Optimized RESTful APIs with Express.js</li> <li>Efficient database queries for quick response times</li> <li>Asynchronous operations for better performance</li> </ul> </li> <li><strong>👤 User Profile Creation</strong> <ul> <li>Create comprehensive professional portfolios</li> <li>Upload profile pictures and cover images</li> <li>Add background and work experience</li> <li>Include skills, projects, and contact information</li> </ul> </li> <li><strong>🎨 Multiple Templates</strong> <ul> <li>Various pre-designed portfolio templates</li> <li>Customizable layout options</li> <li>Responsive design for all devices</li> </ul> </li> <li><strong>✏️ Edit Profile</strong> <ul> <li>Real-time profile editing capabilities</li> <li>Drag-and-drop interface for easy customization</li> <li>Preview changes before saving</li> <li>Auto-save functionality</li> </ul> </li> <li><strong>🔍 Profile Discovery</strong> <ul> <li>Browse all user profiles</li> <li>Advanced search and filtering options</li> <li>Category-based profile exploration</li> <li>Recommendation system</li> </ul> </li> <li><strong>🔎 Enhanced Search</strong> <ul> <li>Smart search with auto-suggestions</li> <li>Filter by skills, location, experience</li> <li>Keyword-based profile matching</li> <li>Fast and accurate results</li> </ul> </li> </ul>
 
 📸 **Project Demo**
